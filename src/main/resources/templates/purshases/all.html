@@ -10,7 +10,7 @@
 <body>
     <!-- integration du menu -->
     <div layout:fragment="content">
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
@@ -25,11 +25,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Jus d'orange</td>
-                                    <td>10</td>
-                                    <td>02/11/2024</td>
+                                <tr th:each="purshase : ${purshases}">
+                                    <td th:text="${purshase.id}"></td>
+                                    <td th:text="${purshase.product.getRef()}"></td>
+                                    <td th:text="${purshase.quantity}"></td>
+                                    <td th:text="${purshase.dateP}"></td>
                                 </tr>
                             </tbody>
 
@@ -44,11 +44,13 @@
                         <h5 class="card-title">Ajout d'un achat</h5>
                         <form th:action="@{/purshases/save}" th:object="${purshase}" method="post">
                             <div class="mb-3">
-                                <label for="product" class="form-label">Produit</label>
-                                <select name="product" th:field="*{product}" class="form-control" id="product" required>
-                                        <option value="P001">P001 - Jus d'orange</option>
-                                        <option value="P002">P002 - Jus de banane</option>
-
+                                <label for="productRef" class="form-label">Produit</label>
+                                <select name="productRef" th:field="*{productRef}" class="form-control" id="productRef" required>
+                                    <option value="" disabled selected>Sélectionnez un produit</option>
+                                    <option th:each="product : ${products}"
+                                            th:value="${product.ref}"
+                                            th:text="${product.ref} + ' - ' + ${product.name}">
+                                    </option>
                                 </select>
                             </div>
                             <div class="mb-3">

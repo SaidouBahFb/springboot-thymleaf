@@ -1,6 +1,6 @@
 package com.groupeisi.companyspringboot.controller;
 
-import com.groupeisi.companyspringboot.dto.SalesDto;
+import com.groupeisi.companyspringboot.dto.request.SalesRequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +19,13 @@ public class SalesController {
 
     @GetMapping(value = "/all")
     public String all(Model model) {
-        model.addAttribute("sale", new SalesDto());
+        model.addAttribute("sale", new SalesRequestDto());
         return "sales/all";
     }
 
     @PostMapping(value = "/save")
-    public String save(@ModelAttribute("sale") SalesDto sale) {
-        logger.info("reference du produit : {}, quantité du produit : {}", sale.getProduct(), sale.getQuantity());
+    public String save(@ModelAttribute("sale") SalesRequestDto salesRequestDto) {
+        logger.info("reference du produit : {}, quantité du produit : {}", salesRequestDto.getProductRef(), salesRequestDto.getQuantity());
         return "sales/all";
     }
 }

@@ -1,6 +1,7 @@
 package com.groupeisi.companyspringboot.mapper;
 
-import com.groupeisi.companyspringboot.dto.SalesDto;
+import com.groupeisi.companyspringboot.dto.request.SalesRequestDto;
+import com.groupeisi.companyspringboot.dto.response.SalesResponseDto;
 import com.groupeisi.companyspringboot.enties.SalesEntity;
 import org.mapstruct.Mapper;
 
@@ -8,9 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface SalesMapper {
-    SalesEntity toSalesEntity(SalesDto salesDto);
+    SalesEntity toSalesEntity(SalesRequestDto salesRequestDto);
 
-    SalesDto toSalesDto(SalesEntity salesEntity);
+    SalesResponseDto toSalesResponseDto(SalesEntity salesEntity);
 
-    List<SalesDto> toListSalesDto(List<SalesEntity> salesEntities);
+    List<SalesResponseDto> toListSalesResponseDto(List<SalesEntity> salesEntities);
 }

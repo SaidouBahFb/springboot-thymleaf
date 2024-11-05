@@ -1,4 +1,4 @@
-package com.groupeisi.companyspringboot.dto;
+package com.groupeisi.companyspringboot.dto.response;
 
 import lombok.*;
 
@@ -7,10 +7,8 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
+public class ProductResponseDto {
     private String ref;
-
     private String name;
-
     private double stock;
 }

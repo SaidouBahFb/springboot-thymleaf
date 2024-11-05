@@ -1,6 +1,7 @@
 package com.groupeisi.companyspringboot.mapper;
 
-import com.groupeisi.companyspringboot.dto.ProductDto;
+import com.groupeisi.companyspringboot.dto.request.ProductRequestDto;
+import com.groupeisi.companyspringboot.dto.response.ProductResponseDto;
 import com.groupeisi.companyspringboot.enties.ProductEntity;
 import org.mapstruct.Mapper;
 
@@ -8,10 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface ProductMapper {
+    ProductEntity toProductEntity(ProductRequestDto productRequestDto);
 
-    ProductEntity toProductEntity(ProductDto productDto);
+    ProductResponseDto toProductResponseDto(ProductEntity productEntity);
 
-    ProductDto toProductDto(ProductEntity productEntity);
-
-    List<ProductDto> toListProductDto(List<ProductEntity> productEntities);
+    List<ProductResponseDto> toListProductResponseDto(List<ProductEntity> productEntities);
 }

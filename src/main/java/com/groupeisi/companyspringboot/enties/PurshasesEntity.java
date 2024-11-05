@@ -2,6 +2,8 @@ package com.groupeisi.companyspringboot.enties;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,10 +22,12 @@ public class PurshasesEntity implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotNull(message = "La date d'achat est obligatoire.")
     @Column(name = "date_p", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dateP;
 
+    @Min(value = 0, message = "La quantité ne peut pas être négative.")
     @Column(name = "quantity", nullable = false)
     private double quantity;
 

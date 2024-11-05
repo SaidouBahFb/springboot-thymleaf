@@ -1,4 +1,4 @@
-package com.groupeisi.companyspringboot.dto;
+package com.groupeisi.companyspringboot.dto.response;
 
 import lombok.*;
 
@@ -9,9 +9,9 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PurshaseDto {
+public class SalesResponseDto {
     private long id;
     private Date dateP;
     private double quantity;
-    private String product;
+    private ProductResponseDto product;
 }
