@@ -23,8 +23,8 @@ import java.util.Optional;
 
 @Controller
 @Slf4j
-@RequestMapping("/purshases")
 @AllArgsConstructor
+@RequestMapping("/purshases")
 public class PurshasesController {
     private final Logger logger = LoggerFactory.getLogger(PurshasesController.class);
     private final ProductService productService;
@@ -40,7 +40,7 @@ public class PurshasesController {
             model.addAttribute("products", products.orElse(new ArrayList<>()));
             logger.info("PurshasesController-all: produits et achats récupérés avec succès");
         } catch (Exception e) {
-            logger.error("PurshasesController-save Erreur lors de la récupération des achats ou de produits", e);
+            logger.error("PurshasesController-all: Erreur lors de la récupération des achats ou de produits", e);
         }
 
         model.addAttribute("purshase", new PurshaseRequestDto());

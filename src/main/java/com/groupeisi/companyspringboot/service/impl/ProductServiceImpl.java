@@ -42,7 +42,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<List<ProductResponseDto>> findAll() {
-        List<ProductEntity> products = productRepository.findAll();
-        return Optional.of(productMapper.toListProductResponseDto(products));
+        return Optional.of(productMapper.toListProductResponseDto(productRepository.findAll()));
     }
 }

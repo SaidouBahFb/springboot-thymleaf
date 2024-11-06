@@ -21,8 +21,8 @@ import java.util.Optional;
 
 @Controller
 @Slf4j
-@RequestMapping("/products")
 @AllArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private final ProductService productService;
@@ -35,7 +35,7 @@ public class ProductController {
             model.addAttribute("products", products.orElse(new ArrayList<>()));
             logger.info("ProductController-all: produits récupérés avec succès");
         }catch (Exception e){
-            logger.error("ProductController-save Erreur lors de la récupération des produits", e);
+            logger.error("ProductController-all: Erreur lors de la récupération des produits", e);
         }
 
         model.addAttribute("product", new ProductRequestDto());

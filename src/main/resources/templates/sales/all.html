@@ -10,7 +10,15 @@
 <body>
     <!-- integration du menu -->
     <div layout:fragment="content">
-        <div class="row">
+        <div class="row mt-4">
+            <div class="container mt-3 d-flex justify-content-end">
+                <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                    <span th:text="${successMessage}"/>
+                </div>
+                <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                    <span th:text="${errorMessage}"/>
+                </div>
+            </div>
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
@@ -25,11 +33,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Jus de banane</td>
-                                    <td>5</td>
-                                    <td>02/11/2024</td>
+                                <tr th:each="sale : ${sales}">
+                                    <td th:text="${sale.id}"></td>
+                                    <td th:text="${sale.product.getRef()}"></td>
+                                    <td th:text="${sale.quantity}"></td>
+                                    <td th:text="${sale.dateP}"></td>
                                 </tr>
                             </tbody>
 
@@ -45,9 +53,11 @@
                             <div class="mb-3">
                                 <label for="productRef" class="form-label">Produit</label>
                                 <select name="productRef" th:field="*{productRef}" class="form-control" id="productRef" required>
-                                    <option value="P001">P001 - Jus d'orange</option>
-                                    <option value="P002">P002 - Jus de banane</option>
-
+                                    <option value="" disabled selected>Sélectionnez un produit</option>
+                                    <option th:each="product : ${products}"
+                                            th:value="${product.ref}"
+                                            th:text="${product.ref} + ' - ' + ${product.name}">
+                                    </option>
                                 </select>
                             </div>
                             <div class="mb-3">
