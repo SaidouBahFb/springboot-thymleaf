@@ -6,8 +6,9 @@ import com.groupeisi.companyspringboot.dto.request.PurshaseRequestDto;
 import com.groupeisi.companyspringboot.dto.response.PurshaseResponseDto;
 import com.groupeisi.companyspringboot.enties.ProductEntity;
 import com.groupeisi.companyspringboot.enties.PurshasesEntity;
+import com.groupeisi.companyspringboot.exceptions.EntityNotFoundException;
 import com.groupeisi.companyspringboot.mapper.PurshasesMapper;
-import com.groupeisi.companyspringboot.service.PurshaseService;
+import com.groupeisi.companyspringboot.service.PurshasesService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -21,8 +22,8 @@ import java.util.Optional;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class PurshasesServiceImpl implements PurshaseService {
-    private static Logger logger = LoggerFactory.getLogger(PurshasesServiceImpl.class);
+public class PurshasesServiceImpl implements PurshasesService {
+    private static final Logger logger = LoggerFactory.getLogger(PurshasesServiceImpl.class);
 
     private final PurshasesRepository purshasesRepository;
     private final ProductRepository productRepository;
@@ -34,7 +35,7 @@ public class PurshasesServiceImpl implements PurshaseService {
 
         if (productEntityOptional.isEmpty()) {
             logger.warn("PurshasesServiceImpl-save: Le produit avec la référence {} n'existe pas.", purshaseRequestDto.getProductRef());
-            return Optional.empty();
+            throw new EntityNotFoundException("Produit non trouvé avec la référence : " + purshaseRequestDto.getProductRef());
         }
 
         ProductEntity productEntity = productEntityOptional.get();

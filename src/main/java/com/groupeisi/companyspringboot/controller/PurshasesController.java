@@ -4,7 +4,7 @@ import com.groupeisi.companyspringboot.dto.request.PurshaseRequestDto;
 import com.groupeisi.companyspringboot.dto.response.ProductResponseDto;
 import com.groupeisi.companyspringboot.dto.response.PurshaseResponseDto;
 import com.groupeisi.companyspringboot.service.ProductService;
-import com.groupeisi.companyspringboot.service.PurshaseService;
+import com.groupeisi.companyspringboot.service.PurshasesService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ import java.util.Optional;
 public class PurshasesController {
     private final Logger logger = LoggerFactory.getLogger(PurshasesController.class);
     private final ProductService productService;
-    private final PurshaseService purshaseService;
+    private final PurshasesService purshaseService;
 
     @GetMapping(value = "/all")
     public String all(Model model) {

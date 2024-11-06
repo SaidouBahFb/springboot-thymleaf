@@ -4,6 +4,7 @@ import com.groupeisi.companyspringboot.dao.ProductRepository;
 import com.groupeisi.companyspringboot.dto.request.ProductRequestDto;
 import com.groupeisi.companyspringboot.dto.response.ProductResponseDto;
 import com.groupeisi.companyspringboot.enties.ProductEntity;
+import com.groupeisi.companyspringboot.exceptions.DuplicateEntityException;
 import com.groupeisi.companyspringboot.mapper.ProductMapper;
 import com.groupeisi.companyspringboot.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
         Optional<ProductEntity> existingProduct = productRepository.findByRef(productRequestDto.getRef());
         if (existingProduct.isPresent()) {
             logger.warn("ProductServiceImpl-save : La référence du produit {} existe déjà.", productRequestDto.getRef());
-            return Optional.empty();
+            throw new DuplicateEntityException("La référence du produit existe déjà : " + productRequestDto.getRef());
         }
         ProductEntity productEntity = productMapper.toProductEntity(productRequestDto);
         productEntity = productRepository.save(productEntity);
