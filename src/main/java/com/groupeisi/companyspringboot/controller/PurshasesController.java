@@ -26,7 +26,7 @@ public class PurshasesController {
 
     @PostMapping(value = "/save")
     public String save(@ModelAttribute("purshase") PurshaseDto purshase) {
-        logger.info("reference du produit : {}, quantité du produit : {}", purshase.getProduct(), purshase.getQuantity());
+        logger.info("reference du produit : {}, quantité du produit : {}", purshase.getProductRef(), purshase.getQuantity());
         return "purshases/all";
     }
 }

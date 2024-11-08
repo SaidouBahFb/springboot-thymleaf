@@ -29,6 +29,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<List<ProductDto>> findAll() {
-        return Optional.empty();
+        return Optional.of(productMapper.toListProductDto(productRepository.findAll()));
     }
 }

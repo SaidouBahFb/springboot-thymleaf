@@ -44,8 +44,8 @@
                         <h5 class="card-title">Ajout d'un achat</h5>
                         <form th:action="@{/purshases/save}" th:object="${purshase}" method="post">
                             <div class="mb-3">
-                                <label for="product" class="form-label">Produit</label>
-                                <select name="product" th:field="*{product}" class="form-control" id="product" required>
+                                <label for="productRef" class="form-label">Produit</label>
+                                <select name="productRef" th:field="*{productRef}" class="form-control" id="productRef" required>
                                         <option value="P001">P001 - Jus d'orange</option>
                                         <option value="P002">P002 - Jus de banane</option>
 

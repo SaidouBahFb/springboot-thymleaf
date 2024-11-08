@@ -25,11 +25,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>PR001</td>
-                                        <td>Jus d'orange</td>
-                                        <td>50</td>
-                                    </tr>
+                                <tr th:each="product : ${products}">
+                                    <td th:text="${product.ref}">Référence du produit</td>
+                                    <td th:text="${product.name}">Nom du produit</td>
+                                    <td th:text="${product.stock}">Stock du produit</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

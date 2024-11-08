@@ -25,7 +25,7 @@ public class SalesController {
 
     @PostMapping(value = "/save")
     public String save(@ModelAttribute("sale") SalesDto sale) {
-        logger.info("reference du produit : {}, quantité du produit : {}", sale.getProduct(), sale.getQuantity());
+        logger.info("reference du produit : {}, quantité du produit : {}", sale.getProductRef(), sale.getQuantity());
         return "sales/all";
     }
 }

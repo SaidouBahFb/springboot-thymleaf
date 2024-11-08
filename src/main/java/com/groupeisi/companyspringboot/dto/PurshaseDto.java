@@ -13,5 +13,5 @@ public class PurshaseDto {
     private long id;
     private Date dateP;
     private double quantity;
-    private String product;
+    private String productRef;
 }
