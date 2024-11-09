@@ -6,22 +6,21 @@
   <link th:href="@{/css/style.css}" rel="stylesheet"></link>
 </head>
 <body>
-<!-- Cloned from "https://www.facebook.com/groups/340398917711992/permalink/1083432650075278/" -->
-<div class="container">
-  <div class="header">
-    <h1><span class="l">L</span>OGIN</h1>
+  <div class="container">
+      <div class="header">
+          <h1><span class="l">L</span>OGIN</h1>
+      </div>
+      <form th:action="@{/login}" method="post">
+          <label>Username</label>
+          <input type="text" class="inp" name="username" required>
+          <label>Password</label>
+          <input type="password" class="inp" name="password" required>
+          <button type="submit">Enter</button>
+      </form>
+      <div class="signup">
+          <b>Don't have account?</b>
+          <a href="#">Sign up</a>
+      </div>
   </div>
-  <form>
-    <label>Username</label>
-    <input type="text" class="inp" name="uname" required>
-    <label>Password</label>
-    <input type="password" class="inp" name="psw" required>
-    <button type="submit">Enter</button>
-  </form>
-  <div class="signup">
-    <b>Don't have account?</b>
-    <a href="#">Sign up</a>
-  </div>
-</div>
 </body>
 </html>
